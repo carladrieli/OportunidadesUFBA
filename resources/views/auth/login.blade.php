@@ -20,7 +20,7 @@
     <![endif]-->
   </head>
   <body>
-    
+
     <div class="container">
       <div class="row">
       <form class="formulario" method="post" action="{{action('Auth\AuthController@postLogin')}}">
@@ -38,7 +38,7 @@
         <div class="conteudo-login">
           <div  class="cadastro"><a href="{{action('Auth\AuthController@getRegister')}}">Ainda não tenho cadastro.</a></div>
           <div class="form-group">
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Usuário" name='email'>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name='email'>
         </div>
         <div class="form-group">
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name='senha'>
