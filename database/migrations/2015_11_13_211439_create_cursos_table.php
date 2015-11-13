@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVagasCandidatosTable extends Migration
+class CreateCursosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,9 @@ class CreateVagasCandidatosTable extends Migration
      */
     public function up()
     {
-        Schema::create('vagas_candidatos', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->text('apresentacao');
-            $table->string('curriculo', 100);
+            $table->text('titulo');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateVagasCandidatosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('vagas_candidatos');
+        Schema::drop('cursos');
     }
 }

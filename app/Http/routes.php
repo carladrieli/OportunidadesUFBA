@@ -29,9 +29,12 @@
 
 
 Route::group(['prefix' => 'painel', 'as' => 'sistema::', 'middleware' => 'auth'], function()
-{	
-  Route::get('/', 'PainelController@index');    
-  
+{
+  Route::get('/', 'PainelController@index');
+
+  //Empresas
+  Route:get('/empresa/oportunidades', ['as' => 'empresa.oportunidades', 'uses' => 'Empresa\OportunidadesController@index']);
+
   //Logout
   Route::get('auth/logout', ['as'=> 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 });

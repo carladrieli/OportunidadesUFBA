@@ -8,8 +8,8 @@
     <title>Alunos Interessados | Oportunidades UFBA</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet"><link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('style.css')}}" rel="stylesheet"><link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     @yield('cssExtra')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,55 +48,55 @@
                   <span><i class="glyphicon glyphicon-log-out"></i> Sair</span>
                 </a>
               </li>
-            </ul>     
+            </ul>
           </div>
-          
+
         </div>
         <div class="col-sm-3 col-md-2 sidebar">
           <div id="main-menu-wrapper">
             <h5>Navegação</h5>
-            <ul class="wraplist"> 
-            <li class=""> 
+            <ul class="wraplist">
+            <li class="">
               <a href="painel.html">
                 <span class="glyphicon glyphicon-dashboard"></span>
                 <span class="title">Painel</span>
               </a>
             </li>
             @if(Auth::user()->isAdmin())
-            <li class="open"> 
+            <li class="open">
                 <a href="cadastrar_aluno.html">
                     <span class="glyphicon glyphicon-education"></span>
                     <span class="title">Cadastrar Aluno</span>
                 </a>
               </li>
-              <li class=""> 
+              <li class="">
                 <a href="cadastrar_professor.html">
                     <span class="glyphicon glyphicon-user"></span>
                     <span class="title">Cadastrar Professor</span>
                 </a>
               </li>
-              <li class=""> 
+              <li class="">
                 <a href="cadastrar_empresa.html">
                     <span class="glyphicon glyphicon-home"></span>
                     <span class="title">Cadastrar Empresa</span>
                 </a>
               </li>
-              <li class=""> 
+              <li class="">
                 <a href="cadastrar_curso.html">
                     <span class="glyphicon glyphicon-book"></span>
                     <span class="title">Cadastrar Curso</span>
                 </a>
               </li>
             @endif
-            @if(Auth::user()->isEmpresa() || Auth::user()->isAdmin())
-            <li class=""> 
-                <a href="cadastrar_oportunidade.html">
+            @if(Auth::user()->isEmpresa())
+            <li class="">
+                <a href="{{ route('sistema::empresa.oportunidades') }}">
                     <span class="glyphicon glyphicon-check"></span>
-                    <span class="title">Cadastrar Oportunidade</span>
+                    <span class="title">Gerenciar Oportunidades</span>
                 </a>
               </li>
             @endif
-            <li class=""> 
+            <li class="">
                 <a href="oportunidades.html">
                     <span class="glyphicon glyphicon-folder-open"></span>
                     <span class="title">Oportunidades</span>
@@ -104,7 +104,7 @@
             </li>
             </ul>
           </div>
-          
+
           </div>
 
         <section id="main-content">
@@ -112,14 +112,14 @@
           @yield('conteudo')
           </section>
         </section>
-        
+
       </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     @yield('scriptsExtra')
   </body>
 </html>
