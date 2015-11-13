@@ -12,7 +12,7 @@
 
 1. Instalar o composer
 
-2. Clonar o repositório do git `git clone https://github.com/guiassemany/UFBAcontece.git`
+2. Clonar o repositório do git `git clone https://github.com/laiserosa/OportunidadesUFBA.git`
 
 3. Ir na pasta que contém o código do projeto e executar `composer install`
 
