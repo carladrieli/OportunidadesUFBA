@@ -18,7 +18,7 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
-    use PresentableTrait;
+    // use PresentableTrait;
 
     protected $presenter = 'App\Presenters\UsuarioPresenter';
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Alunos Interessados | Oportunidades UFBA</title>
+    <title>Oportunidades UFBA</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -26,21 +26,9 @@
           <div class="logo-area">
             <h4>Oportunidades <strong>UFBA</strong></h4>
           </div>
-          <div class="pull-left">
-            <div class="info-menu">
-              <form class="formulario-search">
-                <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pesquisar">
-                </div>
-              </form>
-            </div>
-          </div>
           <div class="pull-right">
             <ul class="info-menu right-links list-inline list-unstyled">
-              <li class="profile">
-                <a href="#" class="toggle">
-                  <span><i class="glyphicon glyphicon-bell"></i> Notificações</span>
-                </a>
+              <li class="profile">                
                 <a href="#" class="toggle">
                   <span><i class="glyphicon glyphicon-user"></i> {{Auth::user()->nome}}</span>
                 </a>
@@ -89,19 +77,24 @@
               </li>
             @endif
             @if(Auth::user()->isEmpresa())
-            <li class="">
+              <li class="">
                 <a href="{{ route('sistema::empresa.oportunidades') }}">
                     <span class="glyphicon glyphicon-check"></span>
                     <span class="title">Gerenciar Oportunidades</span>
                 </a>
-              </li>
+              </li>                            
             @endif
+            @if(Auth::user()->isAluno())
             <li class="">
-                <a href="oportunidades.html">
-                    <span class="glyphicon glyphicon-folder-open"></span>
-                    <span class="title">Oportunidades</span>
+                <a href="{{ route('sistema::aluno.oportunidades') }}">
+                    <span class="glyphicon glyphicon-check"></span>
+                    <span class="title">Visualizar Oportunidades</span>
                 </a>
-            </li>
+              </li>
+            
+
+            @endif
+           
             </ul>
           </div>
 

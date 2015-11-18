@@ -8,6 +8,8 @@ class Oportunidade extends Model
 {
     protected $table = "oportunidades";
 
+    protected $fillable = ['usuario_id', 'titulo', 'descricao', 'cargaHoraria', 'valor', 'data_inicio_selecao', 'data_fim_selecao'];
+
     public function candidatos()
     {
       return $this->hasMany(OportunidadeCandidato::class);

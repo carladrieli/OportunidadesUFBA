@@ -33,7 +33,15 @@ Route::group(['prefix' => 'painel', 'as' => 'sistema::', 'middleware' => 'auth']
   Route::get('/', 'PainelController@index');
 
   //Empresas
-  Route:get('/empresa/oportunidades', ['as' => 'empresa.oportunidades', 'uses' => 'Empresa\OportunidadesController@index']);
+  Route::get('/empresa/oportunidades', ['as' => 'empresa.oportunidades', 'uses' => 'Empresa\OportunidadesController@index']);
+  Route::get('/empresa/novaOportunidade', ['as' => 'empresa.novaoportunidade', 'uses' => 'Empresa\OportunidadesController@create']);
+  Route::post('/empresa/novaOportunidade', ['as' => 'empresa.novaoportunidade', 'uses' => 'Empresa\OportunidadesController@store']);
+
+
+  //Alunos
+  Route::get('/estudante/oportunidades', ['as' => 'estudante.oportunidades', 'uses' => 'Estudante\OportunidadesController@index']);
+
+
 
   //Logout
   Route::get('auth/logout', ['as'=> 'logout', 'uses' => 'Auth\AuthController@getLogout']);
