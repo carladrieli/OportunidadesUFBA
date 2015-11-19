@@ -30,17 +30,33 @@
 
 Route::group(['prefix' => 'painel', 'as' => 'sistema::', 'middleware' => 'auth'], function()
 {
-  Route::get('/', 'PainelController@index');
+  //Route::get('/', 'PainelController@index');
+  Route::get('/', ['as' => 'painel', 'uses' => 'PainelController@index']);
 
-  //Empresas
-  Route::get('/empresa/oportunidades', ['as' => 'empresa.oportunidades', 'uses' => 'Empresa\OportunidadesController@index']);
-  Route::get('/empresa/novaOportunidade', ['as' => 'empresa.novaoportunidade', 'uses' => 'Empresa\OportunidadesController@create']);
-  Route::post('/empresa/novaOportunidade', ['as' => 'empresa.novaoportunidade', 'uses' => 'Empresa\OportunidadesController@store']);
+  //Usuario
+  //Route::get('auth/cadastrar', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
+  //Route::post('auth/cadastrar', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@postRegister']);
 
+  //Curso
+  Route::get('/curso', ['as' => 'curso', 'uses' => 'CursoController@index']);
+  Route::get('/curso/novoCurso', ['as' => 'curso.novocurso', 'uses' => 'CursoController@create']);
+  Route::post('/curso/novoCurso', ['as' => 'curso.novocurso', 'uses' => 'CursoController@store']);
+  Route::get('/curso/editarCurso/{id}', ['as' => 'curso.editarcurso', 'uses' => 'CursoController@edit']);
+  Route::post('/curso/editarCurso/{id}', ['as' => 'curso.editarcurso', 'uses' => 'CursoController@update']);
+  Route::get('/curso/excluirCurso/{id}', ['as' => 'curso.excluircurso', 'uses' => 'CursoController@destroy']);
 
-  //Alunos
-  Route::get('/estudante/oportunidades', ['as' => 'estudante.oportunidades', 'uses' => 'Estudante\OportunidadesController@index']);
+  //Oportunidade
+  Route::get('/oportunidade', ['as' => 'oportunidade', 'uses' => 'Oportunidade\OportunidadeController@index']);
+  Route::get('/oportunidade/novaOportunidade', ['as' => 'oportunidade.novaoportunidade', 'uses' => 'Oportunidade\OportunidadeController@create']);
+  Route::post('/oportunidade/novaOportunidade', ['as' => 'oportunidade.novaoportunidade', 'uses' => 'Oportunidade\OportunidadeController@store']);
+  Route::get('/oportunidade/editarOportunidade/{id}', ['as' => 'oportunidade.editaroportunidade', 'uses' => 'Oportunidade\OportunidadeController@edit']);
+  Route::post('/oportunidade/editarOportunidade/{id}', ['as' => 'oportunidade.editaroportunidade', 'uses' => 'Oportunidade\OportunidadeController@update']);
+  Route::get('/oportunidade/excluirOportunidade/{id}', ['as' => 'oportunidade.excluiroportunidade', 'uses' => 'Oportunidade\OportunidadeController@destroy']);
+  Route::get('/oportunidadeAluno', ['as' => 'oportunidadeAluno', 'uses' => 'Oportunidade\OportunidadeController@index']);
+  Route::get('/oportunidadeAluno/candidatar/{id}', ['as' => 'oportunidade.candidataroportunidade', 'uses' => 'Oportunidade\OportunidadeController@candidatar']);
 
+  
+ 
 
 
   //Logout

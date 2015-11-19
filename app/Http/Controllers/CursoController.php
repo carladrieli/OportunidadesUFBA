@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Empresa;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Oportunidade;
+use App\Curso;
 use Validator;
 use Auth;
 
-class OportunidadesController extends Controller
-{
+class CursoController extends Controller
 
+ {
     use AuthenticatesAndRegistersUsers;
 
-    protected $redirectPath = 'painel/empresa/oportunidades/';
+    protected $redirectPath = 'painel/curso';
 
     /**
      * Display a listing of the resource.
@@ -24,9 +24,10 @@ class OportunidadesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      $oportunidades = Oportunidade::paginate(15);
-      return view ('empresa.oportunidades.index', compact('oportunidades'));
+    {   
+        $cursos = Curso::all();
+
+        return view('curso.index', compact('cursos'));
     }
 
     /**
@@ -36,7 +37,7 @@ class OportunidadesController extends Controller
      */
     public function create()
     {
-        return view ('empresa.oportunidades.nova');
+        return view ('curso.novoCurso');
     }
 
     /**
@@ -47,17 +48,11 @@ class OportunidadesController extends Controller
      */
     public function store(Request $request)
     {
-        $oportunidade = new Oportunidade;
-        $oportunidade->usuario_id = Auth::user()->id;
-        $oportunidade->titulo = $request->get('titulo');
-        $oportunidade->descricao = $request->get('descricao');
-        $oportunidade->cargaHoraria = $request->get('cargaHoraria');
-        $oportunidade->valor = $request->get('valor');
-        $oportunidade->data_inicio_selecao = $request->get('data_inicio_selecao');
-        $oportunidade->data_fim_selecao = $request->get('data_fim_selecao');
+        $curso = new Curso;
         
+        $curso->titulo = $request->get('titulo');          
 
-        $oportunidade->save();
+        $curso->save();
 
         return redirect($this->redirectPath());
     }
@@ -81,7 +76,10 @@ class OportunidadesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $curso = Curso::findOrFail($id);
+    
+        return view('curso.editarCurso')->with('curso', $curso);
+
     }
 
     /**
@@ -93,7 +91,17 @@ class OportunidadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $curso = Curso::findOrFail($id);
+        
+        $curso->titulo = $request->get('titulo');          
+
+        $curso->save();
+
+        return redirect($this->redirectPath());
+
+        //return response action
+
     }
 
     /**
@@ -104,6 +112,8 @@ class OportunidadesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $curso = Curso::findOrFail($id);
+        $curso->delete();
+        return redirect($this->redirectPath());
     }
 }

@@ -58,6 +58,7 @@
         <div class="form-group box aluno">
           <input type="text"  class="form-control" id="titulo-oportunidade" name="matricula" placeholder="Matrícula" value="{{ old('matricula') }}">
         </div>
+        
         <div class="form-group box professor">
           <input type="text"  class="form-control" id="titulo-oportunidade" name="siape" placeholder="SIAPE" value="{{ old('siape') }}">
         </div>
@@ -84,6 +85,7 @@
                   if($(this).attr("value")=="A"){
                       $(".box").not(".aluno").hide();
                       $(".aluno").show();
+                      $("input[name*=curso]").rules("add", "required");
                       $("input[name*=matricula]").rules("add", "required");
                       $("input[name*=siape]").rules("remove", "required");
                       $("input[name*=cnpj]").rules("remove", "required");
@@ -92,6 +94,7 @@
                       $(".box").not(".professor").hide();
                       $(".professor").show();
                       $("input[name*=matricula]").rules("remove", "required");
+                      $("input[name*=curso]").rules("remove", "required");
                       $("input[name*=siape]").rules("add", "required");
                       $("input[name*=cnpj]").rules("remove", "required");
                   }
@@ -99,6 +102,7 @@
                       $(".box").not(".empresa").hide();
                       $(".empresa").show();
                       $("input[name*=matricula]").rules("remove", "required");
+                      $("input[name*=curso]").rules("remove", "required");
                       $("input[name*=siape]").rules("remove", "required");
                       $("input[name*=cnpj]").rules("add", "required");
                   }

@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OportunidadeCandidato extends Model
+class OportunidadeCurso extends Model
 {
-    protected $table = "oportunidades_candidatos";
-    protected $fillable = ['usuario_id', 'oportunidade_id'];
-
+    protected $table = "oportunidades_cursos";
+    protected $fillable = ['oportunidade_id', 'curso_id'];
 
     public function oportunidade()
     {

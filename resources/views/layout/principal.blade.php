@@ -45,40 +45,30 @@
             <h5>Navegação</h5>
             <ul class="wraplist">
             <li class="">
-              <a href="painel.html">
+              <a href="{{ route('sistema::painel') }}">
                 <span class="glyphicon glyphicon-dashboard"></span>
                 <span class="title">Painel</span>
               </a>
             </li>
             @if(Auth::user()->isAdmin())
-            <li class="open">
-                <a href="cadastrar_aluno.html">
+            <li class="">
+                <a href="">
                     <span class="glyphicon glyphicon-education"></span>
-                    <span class="title">Cadastrar Aluno</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="cadastrar_professor.html">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <span class="title">Cadastrar Professor</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="cadastrar_empresa.html">
-                    <span class="glyphicon glyphicon-home"></span>
-                    <span class="title">Cadastrar Empresa</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="cadastrar_curso.html">
-                    <span class="glyphicon glyphicon-book"></span>
-                    <span class="title">Cadastrar Curso</span>
-                </a>
-              </li>
+                    <span class="title">Cadastrar Usuário</span>
+                </a> 
+              </li>              
             @endif
             @if(Auth::user()->isEmpresa())
               <li class="">
-                <a href="{{ route('sistema::empresa.oportunidades') }}">
+                <a href="{{ route('sistema::oportunidade') }}">
+                    <span class="glyphicon glyphicon-check"></span>
+                    <span class="title">Gerenciar Oportunidades</span>
+                </a>
+              </li>                            
+            @endif
+            @if(Auth::user()->isProfessor())
+              <li class="">
+                <a href="{{ route('sistema::oportunidade') }}">
                     <span class="glyphicon glyphicon-check"></span>
                     <span class="title">Gerenciar Oportunidades</span>
                 </a>
@@ -86,12 +76,11 @@
             @endif
             @if(Auth::user()->isAluno())
             <li class="">
-                <a href="{{ route('sistema::aluno.oportunidades') }}">
+                <a href="{{ route('sistema::oportunidadeAluno') }}">
                     <span class="glyphicon glyphicon-check"></span>
                     <span class="title">Visualizar Oportunidades</span>
                 </a>
-              </li>
-            
+              </li>    
 
             @endif
            

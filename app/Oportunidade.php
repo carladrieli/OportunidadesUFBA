@@ -8,7 +8,7 @@ class Oportunidade extends Model
 {
     protected $table = "oportunidades";
 
-    protected $fillable = ['usuario_id', 'titulo', 'descricao', 'cargaHoraria', 'valor', 'data_inicio_selecao', 'data_fim_selecao'];
+    protected $fillable = ['usuario_id', 'titulo', 'descricao', 'cargaHoraria', 'valor'];
 
     public function candidatos()
     {
@@ -17,7 +17,7 @@ class Oportunidade extends Model
 
     public function cursos()
     {
-      return $this->belongsToMany(Curso::class);
+      return $this->belongsToMany(Curso::class,'oportunidades_cursos');
     }
 
     public function dono()
